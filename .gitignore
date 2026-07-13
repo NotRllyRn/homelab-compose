@@ -1,3 +1,7 @@
 
 # ignore production files
 .env
+
+# ignore data files
+**/data/
+data/
