@@ -1,0 +1,19 @@
+services:
+  dockge-shell:
+    build:
+      context: /opt/dockge
+      dockerfile: Dockerfile
+    image: local/dockge-git:1
+    container_name: dockge-shell
+    restart: unless-stopped
+    command:
+      - sleep
+      - infinity
+    working_dir: /opt/stacks
+    stdin_open: true
+    tty: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /opt/stacks:/opt/stacks
+      - ${HOME}/.ssh:/root/.ssh:ro
+  

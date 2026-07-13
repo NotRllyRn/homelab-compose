@@ -8,7 +8,7 @@ services:
     image: snapotter/snapotter:latest
     networks:
       lan_net:
-        ipv4_address: 10.17.15.2
+        ipv4_address: ${SNAPOTTER_IPV4_ADDRESS}
     mem_limit: 6g
     memswap_limit: 6g
 networks:
