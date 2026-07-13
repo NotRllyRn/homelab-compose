@@ -3,5 +3,4 @@
 .env
 
 # ignore data files
-**/data/
 data/
