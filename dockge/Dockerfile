@@ -2,6 +2,9 @@ FROM louislam/dockge:1
 
 USER root
 
+ARG GIT_USER_NAME
+ARG GIT_USER_EMAIL
+
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         git \

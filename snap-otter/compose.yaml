@@ -1,8 +1,6 @@
 services:
   snapotter:
     container_name: SnapOtter
-    ports:
-      - 1349:1349
     volumes:
       - ./data:/data
     image: snapotter/snapotter:latest
@@ -11,6 +9,7 @@ services:
         ipv4_address: ${SNAPOTTER_IPV4_ADDRESS}
     mem_limit: 6g
     memswap_limit: 6g
+    restart: unless-stopped
 networks:
   lan_net:
     external: true
