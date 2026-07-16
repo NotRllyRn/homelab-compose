@@ -7,8 +7,7 @@ services:
     networks:
       lan_net:
         ipv4_address: ${SNAPOTTER_IPV4_ADDRESS}
-    mem_limit: 6g
-    memswap_limit: 6g
+    mem_limit: 2g
     restart: unless-stopped
 networks:
   lan_net:

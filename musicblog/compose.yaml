@@ -2,7 +2,7 @@ services:
   mariadb:
     image: ${WORDPRESS_MARIADB_IMAGE_TAG}
     volumes:
-      - /mnt/music-blog-data/maria-db:/var/lib/mysql
+      - /mnt/dockge/music-blog-data/maria-db:/var/lib/mysql
     environment:
       MARIADB_DATABASE: ${WORDPRESS_DB_NAME}
       MARIADB_USER: ${WORDPRESS_DB_USER}
@@ -24,7 +24,7 @@ services:
   wordpress:
     image: ${WORDPRESS_IMAGE_TAG}
     volumes:
-      - /mnt/music-blog-data/wordpress:/bitnami/wordpress
+      - /mnt/dockge/music-blog-data/wordpress:/bitnami/wordpress
     environment:
       WORDPRESS_DATABASE_HOST: mariadb
       WORDPRESS_DATABASE_PORT_NUMBER: 3306

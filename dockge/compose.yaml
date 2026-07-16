@@ -1,5 +1,7 @@
 services:
   dockge:
+    networks:
+      - proxy_backend
     build:
       context: .
       dockerfile: Dockerfile
@@ -13,12 +15,15 @@ services:
       - 5001:5001
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /mnt/dockge-data:/app/data
+      - /mnt/dockge/dockge-data:/app/data
       - /opt/stacks:/opt/stacks
-
       # Mount host SSH keys into Dockge container
       - ${HOME}/.ssh:/root/.ssh:ro
-
     environment:
       DOCKGE_STACKS_DIR: /opt/stacks
       DOCKGE_ENABLE_CONSOLE: "true"
+      
+networks:
+  proxy_backend:
+    external: true
+    name: proxy_backend
