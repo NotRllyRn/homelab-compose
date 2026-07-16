@@ -1,7 +1,7 @@
 services:
   dockge-shell:
     build:
-      context: /opt/dockge
+      context: /opt/stacks/dockge
       dockerfile: Dockerfile
     image: local/dockge-git:1
     container_name: dockge-shell
