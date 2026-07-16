@@ -1,0 +1,24 @@
+services:
+  dockge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        GIT_USER_NAME: ${GIT_USER_NAME}
+        GIT_USER_EMAIL: ${GIT_USER_EMAIL}
+    image: local/dockge-git:1
+    container_name: dockge
+    restart: unless-stopped
+    ports:
+      - 5001:5001
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/dockge-data:/app/data
+      - /opt/stacks:/opt/stacks
+
+      # Mount host SSH keys into Dockge container
+      - ${HOME}/.ssh:/root/.ssh:ro
+
+    environment:
+      DOCKGE_STACKS_DIR: /opt/stacks
+      DOCKGE_ENABLE_CONSOLE: "true"
